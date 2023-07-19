@@ -21,10 +21,10 @@
 /* Animaciones Barra Superior */
 @keyframes barraSupFondo {
     from { background-color: rgba(255, 255, 255, 0.9); }
-    to { background-color: rgba(31, 157, 239, 0.9); }
+    to { background-color: rgba(31, 157, 239, 1); }
 }
 @keyframes barraSupFondoBack {
-    from { background-color: rgba(31, 157, 239, 0.9); }
+    from { background-color: rgba(31, 157, 239, 1); }
     to { background-color: rgba(255, 255, 255, 0.9); }
 }
 @keyframes barraSupLogo1Mostrar {
@@ -212,18 +212,17 @@ body {
                 animation-duration: 1s;
                 animation-fill-mode: forwards;
             }
-        #barraSup.sticky {
-            height: 35px;
-            background-color: rgb(31, 157, 239, 0.95);
-        }
-            #barraSup.sticky img {
-                margin-left: 15px;
-                height: 35px;
-                width: 35px;
+            #barraSup.mini {
+                padding: 10px 15px;
             }
-            #barraSup.sticky button {
-                color: white;
-            }
+                #barraSup.mini #barraSupLogo {
+                    height: 40px;
+                    width: 40px;
+                }
+                    #barraSup.mini img {
+                        height: 40px;
+                        width: 40px;
+                    }
     #contenido {
         width: 100vw;
         margin: 0;
@@ -296,7 +295,7 @@ body {
                 position: relative;
                 flex-direction: column;
                 align-items: center;
-                height: 95px;
+                height: 90px;
                 overflow: hidden;
                 margin-left: 15px;
             }
@@ -356,24 +355,31 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 50px;
         }
+            #divCartas #titulo {
+                margin-top: 120px;
+                margin-bottom: -100px;
+                font-weight: 500;
+                font-size: 32px;
+            }
             #divCartas .carta {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin-top: 115px;
+                margin-top: 160px;
                 border-radius: 10px;
                 border: 2.5px solid #DDDDDD;
                 padding: 0 25px;
                 box-shadow: 26px 17px 6px #DDDDDD;
                 transform: translateY(350px);
                 z-index: 800;
+                opacity: 0;
             }
                 #divCartas .carta.visible {
                     animation: visible;
                     animation-duration: 1s;
                     animation-fill-mode: forwards;
+                    opacity: 1;
                 }
                 #divCartas .carta img {
                     height: 400px;
@@ -381,11 +387,41 @@ body {
                 #divCartas .carta h3 {
                     font-weight: 100;
                 }
+        /* Info */
+        #divInfo {
+            height: 300px;
+            width: 70vw;
+            margin-left: 15vw;
+            margin-top: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 2.5px solid #DDDDDD;
+            box-shadow: 10px 5px 6px #DDDDDD;
+        }
+            #divInfo h2 {
+                font-weight: 100;
+                font-size: 35px;
+                margin-bottom: 15px;
+            }
+            #divInfo h2:not(:nth-child(1)) {
+                color: #2d91cf;
+                padding: 5px 34px;
+                border-radius: 48px;
+                box-shadow: 0 2px 5px #00000080;
+                cursor: pointer;
+                font-size: 23px;
+            }
+                #divInfo h2:not(:nth-child(1)):hover {
+                    text-decoration: underline;
+                }
         /* Pie */
         #divPie {
             height: 174px;
             width: 100vw;
-            margin-top: 100px;
+            margin-top: 150px;
             display: flex;
             background-color: rgba(31, 157, 239, 0.9);
             z-index: 999;
@@ -400,15 +436,6 @@ body {
                 display: flex;
                 flex-direction: column;
             }
-                @media screen and (max-width:970px) {
-                    #divPie #divRedes {
-                        width: auto;
-                        margin-top: 0;
-                        margin-bottom: 10px;
-                        flex-direction: row;
-                        justify-content: center;
-                    }
-                }
                 #divPie #divRedes .btnRedes {
                     display: flex;
                     align-items: center;
@@ -417,11 +444,6 @@ body {
                     cursor: pointer;
                     border-radius: 8px;
                 }
-                    @media screen and (max-width:970px) {
-                        #divPie #divRedes .btnRedes {
-                            padding: 0 5px 0 5px;
-                        }
-                    }
                     #divPie #divRedes .btnRedes.whats:hover {
                         background-color: rgb(255,255,255,0.8)!important;
                         border-color: rgb(255,255,255,0.9)!important;

@@ -36,6 +36,7 @@
             </div>
         </div>
         <div id="divCartas">
+            <h2 id="titulo">Herramienta de desarrollo de modelos de bases de datos</h2>
             <div class="carta">
                 <img src="./assets/img/carta1.svg"/>
                 <h3>Angular lets you start small and supports you as your team and apps grow</h3>
@@ -48,6 +49,11 @@
                 <img src="./assets/img/carta3.svg"/>
                 <h3>Rely on Angular's internationalization tools, security, and accessibility to build for everyone around the world.</h3>
             </div>
+        </div>
+        <div id="divInfo">
+            <h2>¿Est&aacute;s interesado en el producto?</h2>
+            <h2>M&aacute; informaci&oacute;n</h2>
+            <h2>Accede al repositorio</h2>
         </div>
         <div id="divPie">
             <div id="opc1">
@@ -79,6 +85,7 @@
 <script src="./assets/js/jquery.min.js"> </script>
 <script>
     var body = document.getElementsByTagName("body")[0]
+    var barraSup = document.getElementById("barraSup")
     var winHeight = window.innerHeight;
     var lastScroll = window.pageYOffset;
     var swiScroll = 1;
@@ -128,11 +135,13 @@
             body.style.overflowY = "hidden"
             body.classList.remove("scrollUp")
             body.classList.add("scrollDown")
+            barraSup.classList.add("mini")
             scrollDown()
         } else if (lastScroll>window.pageYOffset&&window.pageYOffset<=winHeight&&swiScroll==1) { // Arriba
             body.style.overflowY = "hidden"
             body.classList.remove("scrollDown")
             body.classList.add("scrollUp")
+            barraSup.classList.remove("mini")
             scrollUp()
         }
         lastScroll = window.pageYOffset
@@ -143,7 +152,7 @@
             if (entry.intersectionRatio > 0) {
                 entry.target.classList.add("visible")
             } else {
-                //entry.target.classList.remove("visible")
+                entry.target.classList.remove("visible")
             }
         });
     });
