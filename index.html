@@ -2,7 +2,8 @@
 <head>
     <title>Prodygee</title>
     <link rel="icon" type="image/png" href="./assets/img/Logo.png">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins|Montserrat"/>
     <link rel="stylesheet" href="./assets/css/index.css"/>
 </head>
 
@@ -31,7 +32,7 @@
                         <li class="opcCambioTxt">segura!</li>
                     </ul>
                 </h2>
-                <button>¿Qu&eacute; es Prodygee?</button>
+                <button type="button" onclick="scrollDown()">¿Qu&eacute; es Prodygee?</button>
             </div>
         </div>
         <div id="divCartas">
@@ -48,50 +49,110 @@
                 <h3>Rely on Angular's internationalization tools, security, and accessibility to build for everyone around the world.</h3>
             </div>
         </div>
+        <div id="divPie">
+            <div id="opc1">
+            </div>
+            <div id="opc1">
+            </div>
+            <div id="divRedes">
+                <div class="btnRedes whats" onclick="window.open('https://wa.me/34659035304')">
+                    <button class="btn btn-just-icon ico-red">
+                        <i class="fa fa-whatsapp"></i>
+                    </button>
+                    <p>Whatsapp</p>
+                </div>
+                <div class="btnRedes insta" onclick="window.open('https://www.instagram.com/quierounperrete/')">
+                    <button class="btn btn-just-icon ico-red">
+                        <i class="fa fa-instagram"></i>
+                    </button>
+                    <p>Instagram</p>
+                </div>
+                <div class="btnRedes faceb" onclick="window.open('https://www.facebook.com/quieroUnPerrete/')">
+                    <button class="btn btn-just-icon ico-red">
+                        <i class="fa fa-facebook"></i>
+                    </button>
+                    <p>Facebook</p>
+                </div>
+            </div>
+        </div>
     </div>
 <script src="./assets/js/jquery.min.js"> </script>
 <script>
     var body = document.getElementsByTagName("body")[0]
     var winHeight = window.innerHeight;
-    var lastScroll = 0;
+    var lastScroll = window.pageYOffset;
     var swiScroll = 1;
     var cartas = document.querySelectorAll('.carta')
-    window.onscroll = function() { ajustarBarraSup() }
+    let temp1, temp2
+    var numScroll = 0
+
+    if (lastScroll<760) {
+        lastScroll = 0
+    }
+
+    function scrollDown() {
+        numScroll = 0
+        if (swiScroll==1) {
+            temp1 = setInterval(scrollD, 10);
+        }
+        swiScroll = 0
+    }
+    function scrollD() {
+        numScroll+=10
+        window.scroll({ top: numScroll, left: 0, behavior: "auto" })
+        if (numScroll>=winHeight) {
+            clearTimeout(temp1)
+            body.style.overflowY = "auto"
+            setTimeout( function() { swiScroll = 1 }, 500)
+        }
+    }
+    function scrollUp() {
+        numScroll = winHeight
+        if (swiScroll==1) {
+            temp2 = setInterval(scrollU, 10);
+        }
+        swiScroll = 0
+    }
+    function scrollU() {
+        numScroll-=10
+        window.scroll({ top: numScroll, left: 0, behavior: "auto" })
+        if (numScroll<=0) {
+            clearTimeout(temp2)
+            body.style.overflowY = "auto"
+            setTimeout( function() { swiScroll = 1 }, 500)
+        }
+    }
 
     function ajustarBarraSup() {
-        if (lastScroll<=window.pageYOffset) { // Abajo
-            console.log("scrollDown")
-            console.log(lastScroll+" - "+window.pageYOffset)
+        if (lastScroll<=window.pageYOffset&&window.pageYOffset<=winHeight&&swiScroll==1) { // Abajo
+            body.style.overflowY = "hidden"
             body.classList.remove("scrollUp")
             body.classList.add("scrollDown")
-            if (window.pageYOffset>=1&&window.pageYOffset<=winHeight) {
-                window.scroll({ top: winHeight, left: 0, behavior: "auto" })
-                swiScroll = 0
-            }
-        } else if (lastScroll>window.pageYOffset&&window.pageYOffset<=winHeight) { // Arriba
-            console.log("scrollUp")
-            console.log(lastScroll+" - "+window.pageYOffset)
+            scrollDown()
+        } else if (lastScroll>window.pageYOffset&&window.pageYOffset<=winHeight&&swiScroll==1) { // Arriba
+            body.style.overflowY = "hidden"
             body.classList.remove("scrollDown")
             body.classList.add("scrollUp")
-            window.scroll({ top: 0, left: 0, behavior: "auto" })
-            swiScroll = 1
+            scrollUp()
         }
         lastScroll = window.pageYOffset
     }
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-         if (entry.intersectionRatio > 0) {
-// visible
-         } else {
-// invisible
-         }
+            if (entry.intersectionRatio > 0) {
+                entry.target.classList.add("visible")
+            } else {
+                //entry.target.classList.remove("visible")
+            }
         });
     });
 
     cartas.forEach(carta => {
         observer.observe(carta);
     });
+
+    $(document).ready(function() { setTimeout(function() { window.onscroll = function() { ajustarBarraSup() } }, 500) })
 </script>
 </body>
 </html>

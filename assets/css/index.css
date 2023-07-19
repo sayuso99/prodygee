@@ -115,6 +115,12 @@
     to { color: rgba(255, 255, 255, 0.8); }
 }
 
+/* Animaciones Cartas */
+@keyframes visible {
+    from { transform: translateY(350px); }
+    to { transform: translateY(0px); }
+}
+
 /* 
 #2d91cf
 rgb(31, 157, 239)
@@ -250,14 +256,14 @@ body {
                 animation-fill-mode: forwards;
             }
             #headerLogo {
-                height: 400px;
-                width: 338.25px;
+                height: 345px;
+                width: 291.91px;
                 position: relative;
                 margin-right: 15px;
-                margin-bottom: 25px;
+                margin-bottom: 40px;
             }
                 #header img#logo1, #header img#logo2 {
-                    height: 400px;
+                    height: 345px;
                     position: absolute;
                     left: 0;
                     z-index: 800;
@@ -287,9 +293,10 @@ body {
                     }
             #headerTxt {
                 display: flex;
+                position: relative;
                 flex-direction: column;
                 align-items: center;
-                height: 85px;
+                height: 95px;
                 overflow: hidden;
                 margin-left: 15px;
             }
@@ -324,6 +331,8 @@ body {
                }
             
                 #header button {
+                    position: absolute;
+                    top: 65px;
                     margin: 0;
                     padding: 0;
                     border: 0;
@@ -347,21 +356,122 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 150px;
+            margin-top: 50px;
         }
             #divCartas .carta {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin-top: 65px;
+                margin-top: 115px;
                 border-radius: 10px;
-                border: 1.5px solid #DDDDDD;
+                border: 2.5px solid #DDDDDD;
                 padding: 0 25px;
-                box-shadow: 10px 5px 5px #DDDDDD;
+                box-shadow: 26px 17px 6px #DDDDDD;
+                transform: translateY(350px);
+                z-index: 800;
             }
+                #divCartas .carta.visible {
+                    animation: visible;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
                 #divCartas .carta img {
                     height: 400px;
                 }
                 #divCartas .carta h3 {
                     font-weight: 100;
                 }
+        /* Pie */
+        #divPie {
+            height: 174px;
+            width: 100vw;
+            margin-top: 100px;
+            display: flex;
+            background-color: rgba(31, 157, 239, 0.9);
+            z-index: 999;
+        }
+            #divPie #opc1, #divPie #opc2 {
+                width: calc(50vw - 75px);
+            }
+            #divPie #divRedes {
+                width: 150px;
+                margin-top: 10px;
+                margin-right: 30px;
+                display: flex;
+                flex-direction: column;
+            }
+                @media screen and (max-width:970px) {
+                    #divPie #divRedes {
+                        width: auto;
+                        margin-top: 0;
+                        margin-bottom: 10px;
+                        flex-direction: row;
+                        justify-content: center;
+                    }
+                }
+                #divPie #divRedes .btnRedes {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    cursor: pointer;
+                    border-radius: 8px;
+                }
+                    @media screen and (max-width:970px) {
+                        #divPie #divRedes .btnRedes {
+                            padding: 0 5px 0 5px;
+                        }
+                    }
+                    #divPie #divRedes .btnRedes.whats:hover {
+                        background-color: rgb(255,255,255,0.8)!important;
+                        border-color: rgb(255,255,255,0.9)!important;
+                        color: #0DC143!important;
+                    }
+                    #divPie #divRedes .btnRedes.insta:hover {
+                        background-color: rgb(255,255,255,0.8)!important;
+                        border-color: rgb(255,255,255,0.9)!important;
+                        color: #8a3ab9!important;
+                    }
+                    #divPie #divRedes .btnRedes.faceb:hover {
+                        background-color: rgb(255,255,255,0.8)!important;
+                        border-color: rgb(255,255,255,0.9)!important;
+                        color: #4267B2!important;
+                    }
+                    #divPie #divRedes .btnRedes p {
+                        color: white;
+                        font-family: Montserrat;
+                        font-weight: bold;
+                    }
+                        #divPie #divRedes .btnRedes.whats:hover p {
+                            color: #0DC143!important;
+                        }
+                        #divPie #divRedes .btnRedes.insta:hover p {
+                            color: #8a3ab9!important;
+                        }
+                        #divPie #divRedes .btnRedes.faceb:hover p {
+                            color: #4267B2!important;
+                        }
+                    #divPie #divRedes .btnRedes button {
+                        margin: 0;
+                        margin-right: 5px;
+                        padding: 1px 6px 1px 6px;
+                        border: 0;
+                        background: transparent;
+                        height: 35px;
+                        width: 35px;
+                        margin-right: 5px;
+                        cursor: pointer;
+                    }
+                        #divPie #divRedes .btnRedes button i {
+                            font: normal normal normal 20px/1 FontAwesome;
+                            color: white;
+                        }
+                            #divPie #divRedes .btnRedes.whats:hover button i {
+                                color: #0DC143!important;
+                            }
+                            #divPie #divRedes .btnRedes.insta:hover button i {
+                                color: #8a3ab9!important;
+                            }
+                            #divPie #divRedes .btnRedes.faceb:hover button i {
+                                color: #4267B2!important;
+                            }
