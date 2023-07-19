@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>Prodygee</title>
+    <link rel="icon" type="image/png" href="./assets/img/Logo.png">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins"/>
+    <link rel="stylesheet" href="./assets/css/index.css"/>
+</head>
+
+<body>
+    <div id="barraSup">
+        <div id="barraSupLogo">
+            <img src="./assets/img/Logo.png" id="BRlogo1"/>
+            <img src="./assets/img/LogoBlanco.png" id="BRlogo2"/>
+        </div>
+        <button type="button">DOCS</button>
+        <button type="button">COMMUNITY</button>
+        <button type="button">BLOG</button>
+    </div>
+    <div id="contenido">
+        <div id="header">
+            <div id="headerLogo">
+                <img src="./assets/img/LogoBlanco.png" id="logo1"/>
+                <img src="./assets/img/Logo.png" id="logo2"/>
+            </div>
+            <div id="headerTxt">
+                <h2 class="titulo">Desarrolla aplicaciones de la manera m&aacute;s
+                    <ul id="cambioTxt">
+                        <li class="opcCambioTxt">f&aacute;cil!</li>
+                        <li class="opcCambioTxt">r&aacute;pida!</li>
+                        <li class="opcCambioTxt">eficiente!</li>
+                        <li class="opcCambioTxt">segura!</li>
+                    </ul>
+                </h2>
+                <button>¿Qu&eacute; es Prodygee?</button>
+            </div>
+        </div>
+        <div id="divCartas">
+            <div class="carta">
+                <img src="./assets/img/carta1.svg"/>
+                <h3>Angular lets you start small and supports you as your team and apps grow</h3>
+            </div>
+            <div class="carta">
+                <img src="./assets/img/carta2.svg"/>
+                <h3>Join the millions of developers building with Angular in a thriving and friendly community.</h3>
+            </div>
+            <div class="carta">
+                <img src="./assets/img/carta3.svg"/>
+                <h3>Rely on Angular's internationalization tools, security, and accessibility to build for everyone around the world.</h3>
+            </div>
+        </div>
+    </div>
+<script src="./assets/js/jquery.min.js"> </script>
+<script>
+    var body = document.getElementsByTagName("body")[0]
+    var winHeight = window.innerHeight;
+    var lastScroll = 0;
+    var swiScroll = 1;
+    var cartas = document.querySelectorAll('.carta')
+    window.onscroll = function() { ajustarBarraSup() }
+
+    function ajustarBarraSup() {
+        if (lastScroll<=window.pageYOffset) { // Abajo
+            console.log("scrollDown")
+            console.log(lastScroll+" - "+window.pageYOffset)
+            body.classList.remove("scrollUp")
+            body.classList.add("scrollDown")
+            if (window.pageYOffset>=1&&window.pageYOffset<=winHeight) {
+                window.scroll({ top: winHeight, left: 0, behavior: "auto" })
+                swiScroll = 0
+            }
+        } else if (lastScroll>window.pageYOffset&&window.pageYOffset<=winHeight) { // Arriba
+            console.log("scrollUp")
+            console.log(lastScroll+" - "+window.pageYOffset)
+            body.classList.remove("scrollDown")
+            body.classList.add("scrollUp")
+            window.scroll({ top: 0, left: 0, behavior: "auto" })
+            swiScroll = 1
+        }
+        lastScroll = window.pageYOffset
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+         if (entry.intersectionRatio > 0) {
+// visible
+         } else {
+// invisible
+         }
+        });
+    });
+
+    cartas.forEach(carta => {
+        observer.observe(carta);
+    });
+</script>
+</body>
+</html>

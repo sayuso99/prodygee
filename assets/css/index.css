@@ -1,0 +1,367 @@
+/* Scrollbar */
+::-webkit-scrollbar {
+	height: 8px;
+	width: 10px;
+}
+::-webkit-scrollbar:hover {
+	width: 12px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+	opacity: 0.4;
+}
+::-webkit-scrollbar-thumb {
+	background: rgb(0,0,0,0.4);
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(0,0,0,0.6);
+}
+
+/* Animaciones Barra Superior */
+@keyframes barraSupFondo {
+    from { background-color: rgba(255, 255, 255, 0.9); }
+    to { background-color: rgba(31, 157, 239, 0.9); }
+}
+@keyframes barraSupFondoBack {
+    from { background-color: rgba(31, 157, 239, 0.9); }
+    to { background-color: rgba(255, 255, 255, 0.9); }
+}
+@keyframes barraSupLogo1Mostrar {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes barraSupLogo1Ocultar {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes barraSupLogo2Mostrar {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes barraSupLogo2Ocultar {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes barraSupBoton {
+    from { color: rgba(31, 157, 239, 0.8); }
+    to { color: rgba(255, 255, 255, 0.8); }
+}
+@keyframes barraSupBotonBack {
+    from { color: rgba(255, 255, 255, 0.8); }
+    to { color: rgba(31, 157, 239, 0.8); }
+}
+/* Animaciones Header */
+ @keyframes change {
+    0%, 12.66%, 100% {
+        transform: translate3d(0, 0, 0);
+   }
+    16.66%, 29.32% {
+        transform: translate3d(0, -25%, 0);
+   }
+    33.32%, 45.98% {
+        transform: translate3d(0, -50%, 0);
+   }
+    49.98%, 62.64% {
+        transform: translate3d(0, -75%, 0);
+   }
+    66.64%, 79.3% {
+        transform: translate3d(0, -50%, 0);
+   }
+    83.3%, 95.96% {
+        transform: translate3d(0, -25%, 0);
+   }
+}
+
+/* Animaciones Contenido */
+@keyframes fondo {
+    from { background-color: rgba(31, 157, 239, 0.8); }
+    to { background-color: rgba(255, 255, 255, 0.8); }
+}
+@keyframes fondoBack {
+    from { background-color: rgba(255, 255, 255, 0.8); }
+    to { background-color: rgba(31, 157, 239, 0.8); }
+}
+@keyframes logo1Mostrar {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes logo1Ocultar {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes logo2Mostrar {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes logo2Ocultar {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes titulo {
+    from { color: rgba(255, 255, 255, 0.8); }
+    to { color: rgba(31, 157, 239, 0.8); }
+}
+@keyframes tituloBack {
+    from { color: rgba(31, 157, 239, 0.8); }
+    to { color: rgba(255, 255, 255, 0.8); }
+}
+@keyframes boton {
+    from { color: rgba(255, 255, 255, 0.8); }
+    to { color: rgba(31, 157, 239, 0.8); }
+}
+@keyframes botonBack {
+    from { color: rgba(31, 157, 239, 0.8); }
+    to { color: rgba(255, 255, 255, 0.8); }
+}
+
+/* 
+#2d91cf
+rgb(31, 157, 239)
+*/
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: poppins;
+}
+/* Barra Superior */
+    #barraSup {
+        height: 50px;
+        width: 100vw;
+        margin: 0;
+        padding: 15px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    body.scrollDown #barraSup {
+        animation-name: barraSupFondo;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    body.scrollUp #barraSup {
+        animation-name: barraSupFondoBack;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+        #barraSupLogo {
+            height: 50px;
+            width: 50px;
+            position: relative; 
+            margin-right: 20px;
+        }
+            #barraSupLogo img {
+                height: 50px;
+                width: 50px;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                left: 0; 
+            }
+                #barraSupLogo img#BRlogo2 {
+                    opacity: 0;
+                }
+                body.scrollDown #barraSupLogo img#BRlogo1 {
+                    animation-name: barraSupLogo1Ocultar;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
+                body.scrollUp #barraSupLogo img#BRlogo1 {
+                    animation-name: barraSupLogo1Mostrar;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
+                body.scrollDown #barraSupLogo img#BRlogo2 {
+                    animation-name: barraSupLogo2Mostrar;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
+                body.scrollUp #barraSupLogo img#BRlogo2 {
+                    animation-name: barraSupLogo2Ocultar;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
+        #barraSup button {
+            margin: 0;
+            margin-right: 15px;
+            padding: 5px;
+            border: 0;
+            background-color: transparent;
+            color: 2d91cf;
+        }
+            body.scrollDown #barraSup button {
+                animation-name: barraSupBoton;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+            }
+            body.scrollUp #barraSup button {
+                animation-name: barraSupBotonBack;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+            }
+        #barraSup.sticky {
+            height: 35px;
+            background-color: rgb(31, 157, 239, 0.95);
+        }
+            #barraSup.sticky img {
+                margin-left: 15px;
+                height: 35px;
+                width: 35px;
+            }
+            #barraSup.sticky button {
+                color: white;
+            }
+    #contenido {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+        /* Header */
+        #header {
+            height: calc(100vh - 80px);
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            padding-top: 80px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            background-color: rgb(31, 157, 239, 0.8);
+        }
+            body.scrollDown #header {
+                animation-name: fondo;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+            }
+            body.scrollUp #header {
+                animation-name: fondoBack;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+            }
+            #headerLogo {
+                height: 400px;
+                width: 338.25px;
+                position: relative;
+                margin-right: 15px;
+                margin-bottom: 25px;
+            }
+                #header img#logo1, #header img#logo2 {
+                    height: 400px;
+                    position: absolute;
+                    left: 0;
+                    z-index: 800;
+                }
+                #header img#logo2 {
+                    opacity: 0;
+                }
+                    body.scrollDown #contenido #header img#logo1 {
+                        animation-name: logo1Ocultar;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                    }
+                    body.scrollUp #contenido #header img#logo1 {
+                        animation-name: logo1Mostrar;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                    }
+                    body.scrollDown #contenido #header img#logo2 {
+                        animation-name: logo2Mostrar;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                    }
+                    body.scrollUp #contenido #header img#logo2 {
+                        animation-name: logo2Ocultar;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                    }
+            #headerTxt {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 85px;
+                overflow: hidden;
+                margin-left: 15px;
+            }
+                #header h2 {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 30px;
+                    color: white;
+                    text-align: center;
+                    display: flex;
+                }
+                body.scrollDown #contenido #header h2 {
+                        animation-name: titulo;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                }
+
+                #cambioTxt {
+                    margin-top: -20px;
+                    padding: 0;
+                    padding-left: 8px;
+                    text-align: left;
+                    list-style: none;
+                    animation-name: change;
+                    animation-duration: 10s;
+                    animation-iteration-count: infinite;
+               }
+                .opcCambioTxt {
+                    font-size: 30px;
+                    line-height: 85px;
+                    margin: 0;
+               }
+            
+                #header button {
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                    border-bottom: 2px solid white;
+                    background-color: transparent;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 20px;
+                }
+                body.scrollDown #contenido #header button {
+                    animation-name: boton;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                }
+                #header button:hover {
+                    margin-top: -1px;
+                    border-bottom: 3px solid white;
+                }
+        /* Contenido */
+        #divCartas {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 150px;
+        }
+            #divCartas .carta {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 65px;
+                border-radius: 10px;
+                border: 1.5px solid #DDDDDD;
+                padding: 0 25px;
+                box-shadow: 10px 5px 5px #DDDDDD;
+            }
+                #divCartas .carta img {
+                    height: 400px;
+                }
+                #divCartas .carta h3 {
+                    font-weight: 100;
+                }
