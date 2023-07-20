@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./assets/css/index.css"/>
 </head>
 
-<body>
+<body style="overflow-y:hidden;"">
     <div id="barraSup">
         <div id="barraSupLogo">
             <img src="./assets/img/Logo.png" id="BRlogo1"/>
@@ -25,12 +25,12 @@
             </div>
             <div id="headerTxt">
                 <h2 class="titulo">Desarrolla aplicaciones de la manera m&aacute;s
-                    <ul id="cambioTxt">
+                    <!--<ul id="cambioTxt">
                         <li class="opcCambioTxt">f&aacute;cil!</li>
                         <li class="opcCambioTxt">r&aacute;pida!</li>
                         <li class="opcCambioTxt">eficiente!</li>
                         <li class="opcCambioTxt">segura!</li>
-                    </ul>
+                    </ul>-->
                 </h2>
                 <button type="button" onclick="scrollDown()">¿Qu&eacute; es Prodygee?</button>
             </div>
@@ -87,15 +87,10 @@
     var body = document.getElementsByTagName("body")[0]
     var barraSup = document.getElementById("barraSup")
     var winHeight = window.innerHeight;
-    var lastScroll = window.pageYOffset;
     var swiScroll = 1;
     var cartas = document.querySelectorAll('.carta')
     let temp1, temp2
     var numScroll = 0
-
-    if (lastScroll<760) {
-        lastScroll = 0
-    }
 
     function scrollDown() {
         numScroll = 0
@@ -125,34 +120,30 @@
         window.scroll({ top: numScroll, left: 0, behavior: "auto" })
         if (numScroll<=0) {
             clearTimeout(temp2)
-            body.style.overflowY = "auto"
             setTimeout( function() { swiScroll = 1 }, 500)
         }
     }
 
-    function ajustarBarraSup() {
-        if (lastScroll<=window.pageYOffset&&window.pageYOffset<=winHeight&&swiScroll==1) { // Abajo
+    function ajustarBarraSup(wheel) {
+        if (wheel<1&&window.pageYOffset<=winHeight&&swiScroll==1) { // Abajo
             body.style.overflowY = "hidden"
             body.classList.remove("scrollUp")
             body.classList.add("scrollDown")
             barraSup.classList.add("mini")
             scrollDown()
-        } else if (lastScroll>window.pageYOffset&&window.pageYOffset<=winHeight&&swiScroll==1) { // Arriba
+        } else if (wheel>1&&window.pageYOffset<=(winHeight+10)&&swiScroll==1) { // Arriba
             body.style.overflowY = "hidden"
             body.classList.remove("scrollDown")
             body.classList.add("scrollUp")
             barraSup.classList.remove("mini")
             scrollUp()
         }
-        lastScroll = window.pageYOffset
     }
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.intersectionRatio > 0) {
                 entry.target.classList.add("visible")
-            } else {
-                entry.target.classList.remove("visible")
             }
         });
     });
@@ -161,7 +152,10 @@
         observer.observe(carta);
     });
 
-    $(document).ready(function() { setTimeout(function() { window.onscroll = function() { ajustarBarraSup() } }, 500) })
+    $(document).bind('mousewheel', function(e) {
+        var delta = e.originalEvent.wheelDelta;
+        ajustarBarraSup(delta)
+    })
 </script>
 </body>
 </html>

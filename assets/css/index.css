@@ -52,7 +52,7 @@
     to { color: rgba(31, 157, 239, 0.8); }
 }
 /* Animaciones Header */
- @keyframes change {
+ /*@keyframes change {
     0%, 12.66%, 100% {
         transform: translate3d(0, 0, 0);
    }
@@ -71,9 +71,7 @@
     83.3%, 95.96% {
         transform: translate3d(0, -25%, 0);
    }
-}
-
-/* Animaciones Contenido */
+}*/
 @keyframes fondo {
     from { background-color: rgba(31, 157, 239, 0.8); }
     to { background-color: rgba(255, 255, 255, 0.8); }
@@ -131,7 +129,6 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: auto;
     font-family: poppins;
 }
 /* Barra Superior */
